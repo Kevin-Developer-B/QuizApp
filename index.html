@@ -1,37 +1,80 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuizApp</title>
 
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="font.css">
 
     <script src="script.js"></script>
 </head>
-<body>
-    <main>
-        <div class="card mb-3" style="max-width: 640px;">
-            <div class="row g-0">
-              <div class="col-md-4 text-bg-primary p-3 container text-center">
-                <img src="Quizapp Blue/logo 2.png" class="img-fluid rounded-start" alt="...">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">HTML</li>
-                    <li class="list-group-item">CSS</li>
-                    <li class="list-group-item">JS</li>
-                    <li class="list-group-item">JAVA</li>
-                </ul>
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+
+<body onload="init()">
+<div>
+    <div id="progress" class="progress" role="progressbar" style="display: none;">
+        <div id="progress-bar" class="progress-bar" style="width: 0"></div>
+      </div>
+    <div class="card mb-3">
+        <div class="g-0">
+            <div class="col-md-4 img-card-body">
+                <img src="Quizapp Blue/logo 2.png" class="img-fluid rounded-start" />
+                <div class="">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item active">HTML</li>
+                        <li class="list-group-item">CSS</li>
+                        <li class="list-group-item">JS</li>
+                        <li class="list-group-item">JAVA</li>
+                    </ul>
                 </div>
-              </div>
             </div>
-          </div>
-    </main>
+            <div class="col-md-8 question-body">
+                <div class="start-screen-container" id="start-screen">
+                    <div class="start-screen">
+                        <h2>Welcome to<br>The Awesome HTML Quiz</h2>
+                        <button class="start-btn" onclick="startQuestion()">QUIZ Start</button>
+                    </div>
+                </div>
+                <div class="card-body" id="question-body" style="display: none;">
+                    <h5 class="card-title" id="questionText">>Frage</h5>
+                    <div class="card mb-3 quiz-answer-card" onclick="answer('answer-1')">
+                        <p>A</p>
+                        <div class="card-body-answer" id="answer-1"></div>
+                    </div>
+                    <div class="card mb-3 quiz-answer-card" onclick="answer('answer-2')">
+                        <p>B</p>
+                        <div class="card-body-answer" id="answer-2"></div>
+                    </div>
+                    <div class="card mb-3 quiz-answer-card" onclick="answer('answer-3')">
+                        <p>C</p>
+                        <div class="card-body-answer" id="answer-3"></div>
+                    </div>
+                    <div class="card mb-3 quiz-answer-card" onclick="answer('answer-4')">
+                        <p>D</p>
+                        <div class="card-body-answer" id="answer-4"></div>
+                    </div>
+                </div>
+                <div class="endscreen-body" id="end-screen" style="display: none;">
+                    <div class="scoreboard-container">
+                        <img class="endscreen-img" src="Quizapp Blue/Group 5.png" alt="">
+                        <h2>COMPLETE<br>HTML QUIZ</h2>
+                        <div class="scorebord"><span style="color: blue; padding-right: 30px;">YOUR SCORE</span>
+                            <b id="amount-of-right-questions">10</b>/<b id="amount-of-questions">10</b></div>
+                        <button class="share-btn">SHARE</button>
+                        <button class="replay-btn" onclick="restartGame()">REPLAY</button>
+                    </div>
+                </div>
+                <div class="btn-container" style="display: none;" id="next-question-button">
+                    <button type="button" class="btn" disabled>&#10094;</button>
+                    <button type="button" class="btn" id="next-button" onclick="nextQuestion()" disabled>&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+<audio src="audio/glitched-alarm-loop.mp3"></audio>
 </html>
